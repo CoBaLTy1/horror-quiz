@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'horror';
+    src: url(fofbb_ital.ttf);
+}
+
+
+@font-face {
+    font-family: 'digital';
+    src: url(ArcadeNormal-ZDZ.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+.overlay {
+    background-image: url("grain.gif");
+    grid-row: 1/21;
+    background-position: center;
+    z-index: 100;
+    opacity: 15%;
+    grid-column: 1/21;
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(20, 5%);
+    grid-template-rows: repeat(20, 5%);
+    height: 100vh;
+}
+
+.background {
+    grid-column: 1/21;
+    grid-row: 1/21;
+    background-color: black;
+}
+
+.kvadrat {
+    grid-column: 1/21;
+    grid-row: 1/21;
+    justify-self: center;
+    align-self: center;
+    height: 80%;
+    width: 50%;
+    background-color: black;
+    border: 5px solid white;
+    box-shadow: 0px 0px 20px white;
+}
+
+.title {
+    grid-column: 6/16;
+    grid-row: 3/6;
+    justify-self: center;
+    align-self: center;
+    color: white;
+    font-size: 3em;
+    font-family: 'digital';
+    white-space: nowrap;
+}
+
+
+
+.input {
+    font-size: 3em;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+.third-form {
+    grid-column: 7/15;
+    grid-row: 8/10;
+    font-family: 'horror';
+    display: none;
+}
+
+.questions-display {
+    grid-column: 7/15;
+    grid-row: 5/8;
+    color: white;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.1em;
+    text-align: center;
+    font-family: digital;
+}
+
+.heart1, .heart2, .heart3 {
+    grid-row: 17/19;
+    height: 100%;
+    width: 60%;
+    justify-self: center;
+    align-self: center;
+}
+
+.heart3 {
+    grid-column: 12/14;
+
+
+}
+
+.heart2 {
+    grid-column: 8/10;
+}
+
+.heart1 {
+    grid-column: 10/12;
+    
+}
+
+.submitbutton {
+    grid-column: 9/13;
+    grid-row: 14/16;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(119, 119, 119);
+    font-size: 1.5em;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    border: none;
+    font-family: digital;
+    white-space: nowrap;
+}
+.submitbutton:hover{
+    background-color: rgb(255, 255, 255);
+    transform: scale(1.1);
+}
+
+
+.first-form {
+    grid-column: 7/15;
+    grid-row: 8/10;
+    white-space: nowrap;
+
+}
+
+.first-choice1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 120%;
+    cursor: pointer;
+}
+
+.first-choice2 {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+    top: 120%;
+    cursor: pointer;
+}
+
+.first-label1 {
+    position: absolute;
+    color: white;
+    font-size: 3em;
+    font-family: digital;
+}
+
+.first-label2 {
+    margin-left: 3%;
+    position: absolute;
+    left: 60%;
+    color: white;
+    font-size: 3em;
+    font-family: digital;
+}
+
+.second-form {
+    grid-row: 8/12;
+    grid-column: 7/15;
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(5, 20%);
+    height: 60%;
+    color: white;
+    margin-top: -3.5%;
+    margin-left: 9.8%;
+}
+
+.second-label1, .second-label2, .second-label3, .second-label4 {
+    font-size: 3.8em;
+    font-family: digital;
+
+}
+
+.second-label1 {
+    grid-column: 2/6;
+    grid-row: 1/3;
+}
+
+.second-label2 {
+    grid-column: 2/6;
+    grid-row: 3/5;
+
+}
+
+.second-label3 {
+    grid-column: 6/10;
+    grid-row: 1/3;
+    height: 100%;
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    
+}
+
+.second-label4 {
+    grid-column: 6/10;
+    grid-row: 3/5;
+    height: 100%;
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+}
+
+.second-choice1, .second-choice2, .second-choice3, .second-choice4 {
+    height: 45%;
+    width: 45%;
+    cursor: pointer;
+}
+
+.jeff {
+    grid-column: 5/15;
+    grid-row: 5/15;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
