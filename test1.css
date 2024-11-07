@@ -99,6 +99,7 @@ body {
     width: 60%;
     justify-self: center;
     align-self: center;
+    margin-bottom: 10%;
 }
 
 .heart3 {
@@ -238,3 +239,32 @@ body {
     display: none;
 }
 
+.static {
+    grid-column: 1/21;
+    grid-row: 1/21;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    opacity: 0;  /* Initial opacity */
+    pointer-events: none;
+    /* transition: 1s ease-in-out; */ /* Remove transition if using animation */
+}
+
+.staticevent {
+    animation: statismo 3s;  /* Make sure the animation runs for 3s */
+}
+
+@keyframes statismo {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
