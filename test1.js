@@ -5,6 +5,10 @@ const input = document.querySelector('.input')
 const firstform = document.querySelector('.first-form')
 const submit = document.querySelector('.submitbutton')
 const secondform = document.querySelector('.second-form')
+const backgroundmusic = document.querySelector('.music')
+const static = document.querySelector('.static')
+
+
 
 
 one = true
@@ -56,8 +60,6 @@ function typeText(newText, typingSpeed = 100) {
                 else if (thirdone === true) {
                     style.display = 'block'
                 }
-   
-
 
 
             }
@@ -96,15 +98,28 @@ function question3() {
 function question4() {
     const text4 = ''
     typeText(text4, 50)
-}
+}ääöo
+
+
 
 function getanswer() {
+
+    static.style.opacity = '0'
+    if (delay === true) {
+
+    }
+    else if (delay === false) {
+    static.classList.add('staticevent')
+    }
+
     if (one === true) {
         if (answer === 'choice1' && delay === false) {
         firstform.style.display = 'none'
         answer = ''
         secondone = true
-        yestofirstquestion()
+        staticevent.addEventListener('animationend', function() {
+            yestofirstquestion()
+        })
         one = false
         two = true
     }
@@ -131,11 +146,14 @@ function getanswer() {
         three = false
         four = true
 
-    }
 
     }
 
 
 
+    }
 
 
+
+    let audio = document.querySelector(".music"); // Use querySelector to target the audio element
+    audio.play(); // Play the audio
