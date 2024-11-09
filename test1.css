@@ -68,18 +68,12 @@ body {
 
 
 
-.input {
-    font-size: 3em;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-}
+
 
 .third-form {
     grid-column: 7/15;
     grid-row: 8/10;
     font-family: 'horror';
-    display: none;
 }
 
 .questions-display {
@@ -141,7 +135,6 @@ body {
     grid-column: 7/15;
     grid-row: 8/10;
     white-space: nowrap;
-
 }
 
 .first-choice1 {
@@ -159,6 +152,7 @@ body {
     width: 100%;
     top: 120%;
     cursor: pointer;
+    right: 6;
 }
 
 .first-label1 {
@@ -232,10 +226,18 @@ body {
 }
 
 .jeff {
-    grid-column: 5/15;
-    grid-row: 5/15;
+    grid-column: 9/13;
+    grid-row: 10/13;
     height: 100%;
     width: 100%;
+    display: none;
+}
+
+.input {
+    font-size: 3em;
+    height: 50%;
+    width: 100%;
+    background-color: white;
     display: none;
 }
 
@@ -251,7 +253,7 @@ body {
 }
 
 .staticevent {
-    animation: statismo 3s;  /* Make sure the animation runs for 3s */
+    animation: statismo 3s forwards;  /* Make sure the animation runs for 3s */
 }
 
 @keyframes statismo {
