@@ -9,9 +9,13 @@
 </head>
 <body>
     <div class="container">
+
+        <h1 class="menu">Horror quiz</h1>
+        <button onclick="start()" class="play">Play</button>
+        <img src="drakendedyou.gif" class="begin-overlay">
         <div class="background"></div>
         <div class="kvadrat"></div>
-        <h1 class="title">Halloween Quiz</h1>
+        <h1 class="title">Horror Quiz</h1>
 
         <form class="third-form">
             <input class="input" type="text">
@@ -46,10 +50,35 @@
             </label>
         </form>
 
+        <form class="fourth-form">
+            <select class="ranger selector" name="picker">
+                <option class="ranger" value="1">Slender Man</option>
+                <option class="ranger" value="2">Sonic.EXE</option>
+                <option class="ranger" value="3">The Rake</option>
+                <option class="ranger" value="4">Momo</option>
+                <option class="ranger" value="5">Smile Dog</option>
+                <option class="ranger" value="6">Ben Drowned</option>
+                <option class="ranger" value="7">giga nigga</option>
+                <option class="ranger" value="8">The Russian Sleep Experiment</option>
+                <option class="ranger" value="9">Lavender Town Syndrome</option>
+                <option class="ranger" value="10">The Backrooms</option>
+                <option class="ranger" value="11">Anasis Goatman</option>
+            </select>
+        </form>
+
+        <form class="fifth-form">
+            <input id="password" class="full" type="password">
+        </form>
+        <p class="error">The submitted charactares must be 30 charactares long, spacebar counts as a charactare</p>
+        <p class="counter">0</p>
+
+        <img class="russian" src="LDPDVSIGZU23W5D7RJSYQHIWMM.jpg" alt="">
 
 
+        <img onclick="audiooner()" class="audio-off" src="volume-mute.png" alt="">
+        <img onclick="audiooner()" class="audio-on" src="volume.png" alt="">
 
-        <div class="questions-display">Welcome to the halloween quiz, do you dare to proceed?</div>
+        <div class="questions-display">Welcome to the Horror quiz, do you dare to proceed?</div>
 
         <img class="heart1" src="J_Ur_u.png" alt="">
         <img class="heart2" src="J_Ur_u.png" alt="">
@@ -57,9 +86,13 @@
 
 
         <img class="jeff" src="Jeff_the_Killer.webp" alt="">
-        <audio class="music" src="10. Lock Down.mp3"></audio>
+
         <img class="static" src="5a934e84f67d2a61a118ec95b1d6cb74.gif" alt="">
     </div>    
- 
+    <audio class="music" src="10. Lock Down.mp3"></audio>
+    <audio class="first-music" src="231341-127545ab-e98d-47d2-86ae-77cd4e942c83.mp3"></audio>
+
+
+    <a class="copyright" href="https://www.flaticon.com/free-icons/speaker" title="speaker icons">Speaker icons created by Pixel perfect - Flaticon</a>
 </body>
 </html>
