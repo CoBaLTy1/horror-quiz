@@ -46,11 +46,13 @@ body {
 .play {
     grid-row: 8/10;
     grid-column: 2/6;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     z-index: 12;
-    color: white;
+    color: black;
     font-size: 3em;
     cursor: pointer;
+    font-family: digital;
+    filter: drop-shadow(rgb(0, 0, 0) 0.2rem 0.2rem 10px);
 }
 
 .menu {
@@ -181,6 +183,7 @@ body {
     border: none;
     font-family: digital;
     white-space: nowrap;
+    display: none;
 }
 .submitbutton:hover{
     background-color: rgb(255, 255, 255);
