@@ -103,48 +103,47 @@ function yestofirstquestion() {
 
 
 function typeText(newText, typingSpeed = 100) {
-    delay = true
-    if (delay === true) {
-        console.log('doing')
-    }
-    questionsdisplay.textContent = ''; // Clear previous text
+    // Prevent starting a new typing action if one is already in progress
+    if (delay) return;  // Exit early if typing is already in progress
+
+    delay = true;  // Set delay to true, indicating that typing is in progress
+    questionsdisplay.textContent = '';  // Clear any previous text
     let index = 0;
 
     const typingInterval = setInterval(() => {
         if (index < newText.length) {
-            questionsdisplay.textContent += newText.charAt(index);
+            questionsdisplay.textContent += newText.charAt(index);  // Add one character at a time
             index++;
         } else {
-            clearInterval(typingInterval); // Stop when text is complete
-                delay = false
+            clearInterval(typingInterval);  // Stop when all text is typed
+            delay = false;  // Allow the next typing action to proceed
 
-                if (firstone === true) {
-                    firstform.style.display = 'block'
-                    firstone = false
-                }
-
-                else if (secondone === true) {
-                    secondform.style.display = 'block'
-                }
-                else if (thirdone === true) {
-                    input.style.display = 'block'
-                    jeff.style.display = 'block'
-                }
-                else if (fourthone === true) {
-                    fourthform.style.display = 'block'
-                    russian.style.display = 'block'
-                }
-                else if (sixthone === true) {
-                    fifthform.style.display = 'block'
-                    counter.style.display = 'block'
-                }
-
-
+            // Conditionally show the next form or content after typing finishes
+            if (firstone === true) {
+                firstform.style.display = 'block';
+                submit.style.display = 'block';
+                firstone = false;
+            } else if (secondone === true) {
+                secondform.style.display = 'block';
+                submit.style.display = 'block';
+            } else if (thirdone === true) {
+                thirdform.style.display = 'block';
+                input.style.display = 'block';
+                jeff.style.display = 'block';
+                submit.style.display = 'block';
+            } else if (fourthone === true) {
+                fourthform.style.display = 'block';
+                russian.style.display = 'block';
+                submit.style.display = 'block';
+            } else if (fifthone === true) {
+                fifthform.style.display = 'block';
+                counter.style.display = 'block';
+                submit.style.display = 'block';
             }
-
-    }, typingSpeed);
-
+        }
+    }, typingSpeed);  // Adjust typing speed based on the given typingSpeed parameter
 }
+
 
 
 
@@ -159,8 +158,10 @@ secondform.addEventListener('change', function(event) {
     console.log(answer)
 })
 
-input.addEventListener('input', function(event) {
-    answer = event.target.value
+thirdform.addEventListener('input', function(event) {
+    event.preventDefault()
+    answer = input.value
+    console.log(answer)
 })
 
 
@@ -198,35 +199,36 @@ const counter = document.querySelector('.counter'); // Counter element
 const errorMessage = document.querySelector('.error'); // Error message element
 
 // Add event listener to password input field
-passwordField.addEventListener('input', function() {
-    // Get the length of the input field
-    const passwordLength = passwordField.value.length;
-
-    // Update the counter
-    counter.textContent = passwordLength;
-
-    // Check if the length is not 30 and show/hide the error message
+fifthform.addEventListener('submit', function(event) {
+    event.preventDefault();
     if (passwordLength !== 30) {
+        event.preventDefault();
         errorMessage.style.display = 'block'; // Show error
+        counter.style.color = 'white'
     } else {
         errorMessage.style.display = 'none'; // Hide error
         counter.style.color = 'green'
     }
 });
 
-fourthform.addEventListener('input', function() {
-    rangevalue = fourthform.value
-    answer = fourthform.value
+fifthform.addEventListener('input', function() {
+    const passwordLength = passwordField.value.length;
+    counter.textContent = passwordLength;
+    if (passwordLength !== 30) {
+        counter.style.color = 'white'; // Show error
+    } else {
+        counter.style.color = 'green'; // Hide error
+    }
+})
+
+const selector = document.querySelector('.selector')
+
+selector.addEventListener('change', function() {
+    answer = selector.value
     console.log(answer)
 })
 
-function getanswer(event) {
-    console.log(one)
-    console.log(two)
-    console.log(three)
-    console.log(four)
-    console.log(five)
-
+function getanswer() {
     static.style.opacity = '0'
     
     if (delay === false) {
@@ -239,6 +241,7 @@ function getanswer(event) {
         secondone = true
             setTimeout(() => {
                 firstform.style.display = 'none'
+                submit.style.display = 'none'
                 questionsdisplay.textContent = ''
             }, 500)
         static.addEventListener('animationend', function() {
@@ -257,6 +260,7 @@ function getanswer(event) {
             thirdone = true
             setTimeout(() => {
                 secondform.style.display = 'none'
+                submit.style.display = 'none'
                 questionsdisplay.textContent = ''
             }, 500)
             static.addEventListener('animationend', function() {
@@ -271,25 +275,26 @@ function getanswer(event) {
 
     else if (three === true) {
         if (answer.toLowerCase() === 'jeff' || answer.toLowerCase() === 'jeff the killer' && delay === false) {
+            console.log('hello')
         answer = ''
         thirdone = false
         fourthone = true
         setTimeout(() => {
-            thirdform.style.display = 'none'
+            input.style.display = 'none'
             jeff.style.display = 'none'
+            submit.style.display = 'none'
             questionsdisplay.textContent = ''
         }, 500)
         static.addEventListener('animationend', function() {
             question4()
             static.classList.remove('staticevent')
-        })
+        }, {once: true})
         three = false
         four = true
     }
     }
     else if (four === true) {
-        answer
-        if (answer === 8 && delay === false) {
+        if (answer === '8' && delay === false) {
             console.log('hello')
             answer = ''
             fourthone = false
@@ -297,6 +302,7 @@ function getanswer(event) {
             setTimeout(() => {
                 fourthform.style.display = 'none'
                 russian.style.display = 'none'
+                submit.style.display = 'none'
                 questionsdisplay.textContent = ''
             }, 500)
             static.addEventListener('animationend', function() {
@@ -306,25 +312,10 @@ function getanswer(event) {
     }
 
     else if (five === true) {
-        if (delay === false) {
-            passwordLength = remember
-            fifthone = false
-            sixthone = true
-            setTimeout(() => {
-                fifthform.style.display = 'none'
-                counter.style.display = 'none'
-                errorMessage.style.display = 'none'
-                questionsdisplay.textContent = ''
-            }, 500)
-            static.addEventListener('animationend', function() {
-                question6()
-                static.classList.remove('staticevent')
-            })
+        if (delay === false && passwordField.length === 30) {
         }
 
         
     }
 
 }
-
-
