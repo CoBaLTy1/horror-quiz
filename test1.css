@@ -184,6 +184,7 @@ body {
     font-family: digital;
     white-space: nowrap;
     display: none;
+
 }
 .submitbutton:hover{
     background-color: rgb(255, 255, 255);
@@ -200,32 +201,37 @@ body {
 
 .first-choice1 {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 120%;
+    height: 8%;
+    width: 8%;
+    top: 45%;
+    left: 29.5%;
     cursor: pointer;
 }
 
 .first-choice2 {
     position: absolute;
 
-    height: 100%;
-    width: 100%;
-    top: 120%;
+    height: 8%;
+    width: 8%;
+    top: 45%;
+    left: 61.32%;
     cursor: pointer;
-    right: 6;
+
 }
 
 .first-label1 {
     position: absolute;
     color: white;
     font-size: 3em;
+    top: 37%;
+    z-index: 5;
     font-family: digital;
 }
 
 .first-label2 {
     margin-left: 3%;
     position: absolute;
+    top: 37%;
     left: 60%;
     color: white;
     font-size: 3em;
@@ -378,6 +384,91 @@ body {
     grid-row: 8;
     font-size: 5em;
     font-family: digital;
+    display: none;
+}
+
+.sixth-form {
+    grid-column: 7/15;
+    grid-row: 8/14;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.box1 {
+    position: absolute;
+    top: 57%;
+    left: 29.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+    display: none;
+}
+
+.box2 {
+    position: absolute;
+    top: 57%;
+    left: 41.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+    display: none;
+}
+
+.box3 {
+    position: absolute;
+    top: 57%;
+    left: 53.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+    display: none;
+}
+
+.box4 {
+    position: absolute;
+    top: 57%;
+    left: 65.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+    display: none;
+}
+
+.possession {
+    position: absolute;
+    top: 35%;
+    left: 26.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.shining {
+    position: absolute;
+    top: 35%;
+    left: 38.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.alien {
+    position: absolute;
+    top: 35%;
+    left: 50.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.lambs {
+    position: absolute;
+    top: 35%;
+    left: 62.5%;
+    height: 20%;
+    width: 11%;
     display: none;
 }
 
