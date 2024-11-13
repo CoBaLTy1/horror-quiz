@@ -221,10 +221,12 @@ fifthform.addEventListener('submit', function(event) {
 });
 
 
-
+let passwordcontent = ''
+let remembertext = ''
 
 fifthform.addEventListener('input', function() {
 passwordLength = passwordField.value.length;
+passwordcontent = passwordField.value
     counter.textContent = passwordLength;
     if (passwordLength !== 30) {
         counter.style.color = 'white'; // Show error
@@ -335,6 +337,8 @@ function getanswer() {
     else if (five === true) {
         if (delay === false && passwordLength === 30) {
             remember = passwordLength
+            remembertext = passwordcontent
+            console.log(remembertext)
             answer = ''
             fifthone = false
             sixthone = true
