@@ -158,11 +158,18 @@ secondform.addEventListener('change', function(event) {
     console.log(answer)
 })
 
-thirdform.addEventListener('input', function(event) {
-    event.preventDefault()
-    answer = input.value
-    console.log(answer)
+input.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();  // Prevent form submission
+        answer = input.value;
+        console.log(answer);
+    }
+});
+
+input.addEventListener('input', function(event) {
+    answer = input.value;
 })
+
 
 
 secondone = false
@@ -175,7 +182,7 @@ eigthone = false
 ninethone = false
 tenthone = false
 
-let remember = 0
+let remember = ''
 
 function question3() {
     questionsdisplay.textContent = ''
@@ -198,6 +205,8 @@ const passwordField = document.getElementById('password'); // Password input fie
 const counter = document.querySelector('.counter'); // Counter element
 const errorMessage = document.querySelector('.error'); // Error message element
 
+
+let passwordLength = 0
 // Add event listener to password input field
 fifthform.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -211,8 +220,11 @@ fifthform.addEventListener('submit', function(event) {
     }
 });
 
+
+
+
 fifthform.addEventListener('input', function() {
-    const passwordLength = passwordField.value.length;
+passwordLength = passwordField.value.length;
     counter.textContent = passwordLength;
     if (passwordLength !== 30) {
         counter.style.color = 'white'; // Show error
@@ -274,25 +286,31 @@ function getanswer() {
     }
 
     else if (three === true) {
-        if (answer.toLowerCase() === 'jeff' || answer.toLowerCase() === 'jeff the killer' && delay === false) {
-            console.log('hello')
-        answer = ''
-        thirdone = false
-        fourthone = true
-        setTimeout(() => {
-            input.style.display = 'none'
-            jeff.style.display = 'none'
-            submit.style.display = 'none'
-            questionsdisplay.textContent = ''
-        }, 500)
-        static.addEventListener('animationend', function() {
-            question4()
-            static.classList.remove('staticevent')
-        }, {once: true})
-        three = false
-        four = true
+        console.log('answer:', answer)
+        if ((answer.toLowerCase() === 'jeff' || answer.toLowerCase() === 'jeff the killer') && delay === false) {
+            console.log('hello'); // Should log if the condition passes
+    
+            answer = '';
+            thirdone = false;
+            fourthone = true;
+    
+            setTimeout(() => {
+                input.style.display = 'none';
+                jeff.style.display = 'none';
+                submit.style.display = 'none';
+                questionsdisplay.textContent = '';
+            }, 500);
+    
+            static.addEventListener('animationend', function() {
+                question4();
+                static.classList.remove('staticevent');
+            }, { once: true });
+    
+            three = false;
+            four = true;
+        }
     }
-    }
+    
     else if (four === true) {
         if (answer === '8' && delay === false) {
             console.log('hello')
@@ -307,15 +325,32 @@ function getanswer() {
             }, 500)
             static.addEventListener('animationend', function() {
                 question5()
+                static.classList.remove('staticevent')
             })
+            four = false
+            five = true
         }
     }
 
     else if (five === true) {
-        if (delay === false && passwordField.length === 30) {
+        if (delay === false && passwordLength === 30) {
+            remember = passwordLength
+            answer = ''
+            fifthone = false
+            sixthone = true
+            setTimeout(() => {
+                fifthform.style.display = 'none'
+                counter.style.display = 'none'
+                errorMessage.style.display = 'none'
+                passwordField.style.display = 'none'
+                questionsdisplay.textContent = ''
+            }, 500)
+            static.addEventListener('animationend', function() {
+                question6()
+                static.classList.remove('staticevent')
+            })
         }
-
-        
+           
+        }
     }
-
-}
+        
