@@ -67,6 +67,7 @@ let delay = false
 
 secondform.style.display = 'none'
 
+
 let begintext = 'Welcome to the horror quiz, do you dare to proceed?'
 
 let firstone = false
