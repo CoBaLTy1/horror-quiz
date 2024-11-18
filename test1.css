@@ -67,12 +67,12 @@ body {
 }
 
 .begin-overlay {
-    background-color: black;
+
     grid-column: 1/21;
     grid-row: 1/21;
     height: 100%;
     width: 100%;
-    z-index: 10;
+    z-index: 5;
     user-select: none;
     pointer-events: none;
 }
@@ -109,7 +109,7 @@ body {
     align-self: center;
     height: 80%;
     width: 50%;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     border: 5px solid white;
     box-shadow: 0px 0px 20px white;
 }
@@ -147,6 +147,18 @@ body {
     font-family: digital;
 }
 
+.questionsdisplaymid {
+    grid-column: 7/15;
+    grid-row: 5/8;
+    color: white;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.1em;
+    text-align: center;
+    font-family: digital;
+    z-index: 500000000000000000000000000000000;
+}
+
 .heart1, .heart2, .heart3 {
     grid-row: 17/19;
     height: 100%;
@@ -154,6 +166,7 @@ body {
     justify-self: center;
     align-self: center;
     margin-bottom: 10%;
+    transition: transform .5s forwards;
 }
 
 .heart3 {
@@ -162,11 +175,11 @@ body {
 
 }
 
-.heart2 {
+.heart1 {
     grid-column: 8/10;
 }
 
-.heart1 {
+.heart2 {
     grid-column: 10/12;
     
 }
@@ -184,7 +197,8 @@ body {
     border: none;
     font-family: digital;
     white-space: nowrap;
-    z-index: 500;
+    z-index: 501;
+    display: none;
 
 }
 .submitbutton:hover{
@@ -245,8 +259,8 @@ body {
     height: 100%;
     width: 100%;
     color: white;
-    top: 1%;
-    z-index: 0;
+    top: 1.8%;
+    z-index: 500;
     display: none;
 }
 
@@ -344,14 +358,13 @@ body {
     grid-row: 1/21;
     height: 100%;
     width: 100%;
-    z-index: 100000;
+    z-index: 1000000000;
     opacity: 0;  /* Initial opacity */
     pointer-events: none;
-
 }
 
 .staticevent {
-    animation: statismo 3s forwards;  /* Make sure the animation runs for 3s */
+    animation: statismo 5s forwards;  /* Make sure the animation runs for 3s */
 }
 
 
@@ -369,6 +382,7 @@ body {
 .selector {
     height: 100%;
     width: 100%;
+    cursor: pointer;
 }
 
 .ranger {
@@ -505,6 +519,257 @@ body {
     display: none;
 }
 
+.seventh-form {
+    grid-column: 9/13;
+    grid-row: 13;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 50000000;
+}
+
+.thenumber {
+    height: 100%;
+    width: 100%;
+    font-size: 2em;
+    margin-top: -50%;
+    margin-left: -.5%;
+    z-index: 502;
+}
+
+.the-nightmare {
+    height: 100%;
+    width: 100%;
+    grid-column: 8/14;
+    grid-row: 8/12;
+    display: none;
+}
+
+.eight-form {
+    margin-left: 10%;
+    grid-column: 6/10;
+    grid-row: 8;
+    height: 100%;
+    width: 100%;
+    font-family: digital;
+    display: none;
+    z-index: 500;
+}
+
+.selector1 {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ranger {
+    font-family: digital;
+}
+
+.the-rake {
+    grid-column: 11/16;
+    grid-row: 8/13;
+    height: 100%;
+    width: 100%;
+    margin-left: -5%;
+    display: none;
+}
+
+.nineth-form {
+    grid-column: 7/15;
+    grid-row: 8/14;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.box1-1 {
+    position: absolute;
+    top: 57%;
+    left: 29.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+
+}
+
+.box2-2 {
+    position: absolute;
+    top: 57%;
+    left: 41.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+}
+
+.box3-3 {
+    position: absolute;
+    top: 57%;
+    left: 53.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+}
+
+.box4-4 {
+    position: absolute;
+    top: 57%;
+    left: 65.5%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
+}
+
+.scream {
+    position: absolute;
+    top: 35%;
+    left: 26.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.jigsaw {
+    position: absolute;
+    top: 35%;
+    left: 38.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.slender-man {
+    position: absolute;
+    top: 35%;
+    left: 50.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.smile-dog {
+    position: absolute;
+    top: 35%;
+    left: 62.5%;
+    height: 20%;
+    width: 11%;
+    display: none;
+}
+
+.tenth-form {
+    grid-column: 7/15;
+    grid-row: 8/10;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: none;
+    z-index: 100000;
+
+}
+
+.full1 {
+    height: 100%;
+    width: 100%;
+    font-size: 4em;
+}
+
+.playagain {
+    grid-column: 9/13;
+    grid-row: 9/11;
+    background-color: rgb(119, 119, 119);
+    height: 100%;
+    width: 100%;
+    z-index: 5000000001;
+    display: none;
+    cursor: pointer;
+    font-family: digital;
+    font-size: 1.5em;
+
+}
+
+.playagain:hover {
+    background-color: rgb(255, 255, 255);
+    transform: scale(1.1);
+}
+
+.goback {
+    grid-column: 9/13;
+    grid-row: 13/15;
+    background-color: rgb(119, 119, 119);
+    height: 100%;
+    width: 100%;
+    z-index: 5000000001;
+    cursor: pointer;
+    font-family: digital;
+    font-size: 1.5em;
+    display: none;
+}
+
+.goback:hover {
+    background-color: rgb(255, 255, 255);
+    transform: scale(1.1);
+}
+
+.happy1 {
+    grid-column: 20/17;
+    grid-row: 13/16;
+    height: 100%;
+    width: 100%;
+    z-index: 50000000000000;
+    transform: rotate(20deg);
+    opacity: 0;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.happy2 {
+    grid-column: 2/5;
+    grid-row: 13/16;
+    height: 100%;
+    width: 100%;
+    transform: rotate(-20deg);
+    opacity: 0;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.happywhite {
+    grid-column: 20/17;
+    grid-row: 4/7;
+    height: 100%;
+    width: 100%;
+    transform: rotate(-20deg);
+    opacity: 0;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.happyblack {
+    grid-column: 2/5;
+    grid-row: 4/7;
+    height: 100%;
+    width: 100%;
+    transform: rotate(20deg);
+    opacity: 0;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.add {
+    opacity: 1;
+    animation: appear 1s forwards;
+
+}
+
+.blink {
+    opacity: 1;
+    animation: blinking 2s forwards;
+}
+
 @keyframes statismo {
     0% {
         opacity: 0;
@@ -515,6 +780,39 @@ body {
     75% {
         opacity: 1;
     }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    12.5% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    } 37.5% {
+        opacity: 0;
+    } 50% {
+        opacity: 1;
+    }62.5% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    } 
     100% {
         opacity: 0;
     }
