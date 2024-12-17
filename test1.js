@@ -146,12 +146,28 @@ function typeText1(newText1, typingSpeed = 100) {
     if (delay) return;  // Exit early if typing is already in progress
 
     delay = true;  // Set delay to true, indicating that typing is in progress
-    questionsdisplaymid.textContent = '';  // Clear any previous text
+    questionsdisplaymid.innerHTML = '';  // Clear any previous text
     let index = 0;
 
+    const words = newText1.split(' ');  // Split the text into words
+    const lastWord = words.pop();  // Get the last word
+    const remainingText = words.join(' ');  // Join the remaining words back together
+
     const typingInterval = setInterval(() => {
-        if (index < newText1.length) {
-            questionsdisplaymid.textContent += newText1.charAt(index);  // Corrected to use newText1
+        if (index < remainingText.length) {
+            questionsdisplaymid.innerHTML += remainingText.charAt(index);  // Add one character at a time
+            index++;
+        } else if (index < remainingText.length + lastWord.length + 1) {
+            // Add a space before the last word
+            if (index === remainingText.length) {
+                questionsdisplaymid.innerHTML += ' ';
+            } else {
+                // Determine the color based on the last word
+                const color = lastWord.toLowerCase() === "correct" ? "green" : 
+                              lastWord.toLowerCase() === "incorrect" ? "red" : "black";
+                // Add one character of the last word with the determined color
+                questionsdisplaymid.innerHTML += `<span style="color: ${color};">${lastWord.charAt(index - remainingText.length - 1)}</span>`;
+            }
             index++;
         } else {
             clearInterval(typingInterval);  // Stop when all text is typed
@@ -163,15 +179,22 @@ function typeText1(newText1, typingSpeed = 100) {
 
 
 function midtext1() {
-    const texter1 = 'Your answer was Correct'
-    typeText1(texter1, 50)
+    let texter1 = 'Your answer was Correct';
+
+    typeText1(texter1, 50);
 }
 
 
 
+const midblack = document.querySelector('.midblack');
+
+
+
 function midtext2() {
-    const newtext2 = 'Your answer was Incorrect'
-    typeText1(newtext2, 50)
+    let newtext2 = 'Your answer was Incorrect';
+
+
+    typeText1(newtext2, 50);
 }
 
 let audioon = false
@@ -499,39 +522,6 @@ function getanswer() {
         secondone = true;
         lives -= 1;
 
-        if (firstheart === true) {
-            heart3.classList.add('blink');
-            heart3.addEventListener('animationend', function() {
-                heart3.classList.remove('blink');
-                heart3.style.display = 'none'; // Hide heart1 after blinking
-                heart1.style.gridColumn = '11/13'
-                heart2.style.gridColumn = '9/11'
-                heart2.style.marginLeft = '0%'
-                firstheart = false
-                secondheart = true
-            }, { once: true }); // Use { once: true } to ensure the listener is removed after it runs
-        } else if (secondheart === true) {
-            heart2.classList.add('blink');
-            heart2.addEventListener('animationend', function() {
-                heart2.classList.remove('blink');
-                heart2.style.display = 'none'; // Hide heart2 after blinking
-                secondheart = false
-                thirdheart = true
-            }, { once: true });
-        } else if (thirdheart === true) {
-            heart1.classList.add('blink');
-            heart1.addEventListener('animationend', function() {
-                heart1.classList.remove('blink');
-                heart1.style.display = 'none'; // Hide heart3 after blinking
-                thirdheart = false
-            }, { once: true });
-        }
-        setTimeout(() => {
-            firstform.style.display = 'none'
-            submit.style.display = 'none'
-            questionsdisplay.textContent = ''
-            midtext1()
-        }, 500)
     static.addEventListener('animationend', function() {
     yestofirstquestion()
     static.classList.remove('staticevent')
@@ -559,8 +549,65 @@ function getanswer() {
             two = false
             three = true
         }
-    }
 
+            else if (answer !== 'choice1' && delay === false) {
+                answer = '';
+                lives -= 1;
+        
+                if (firstheart === true) {
+                    
+                    heart3.classList.add('blink');
+                    heart3.addEventListener('animationend', function() {
+                        heart3.classList.remove('blink');
+                        heart3.style.display = 'none'; // Hide heart1 after blinking
+                        heart1.style.gridColumn = '11/13'
+                        heart2.style.gridColumn = '9/11'
+                        heart2.style.marginLeft = '0%'
+                        firstheart = false
+                        secondheart = true
+                    }, { once: true }); // Use { once: true } to ensure the listener is removed after it runs
+                } else if (secondheart === true) {
+                    heart1.classList.add('blink');
+                    heart1.addEventListener('animationend', function() {
+                        heart1.classList.remove('blink');
+                        heart1.style.display = 'none'; // Hide heart2 after blinking
+                        heart2.style.gridColumn = '10/12'
+                        secondheart = false
+                        thirdheart = true
+                    }, { once: true });
+                } else if (thirdheart === true) {
+                    heart2.classList.add('blink');
+                    heart2.addEventListener('animationend', function() {
+                        heart2.classList.remove('blink');
+                        heart2.style.display = 'none'; // Hide heart3 after blinking
+                        thirdheart = false
+                    }, { once: true });
+                }
+                setTimeout(() => {
+                    midblack.style.display = 'block'
+                    firstform.style.display = 'none'
+                    submit.style.display = 'none'
+                    questionsdisplay.textContent = ''
+                    midtext2()
+                }, 800)
+
+                setTimeout(() => {
+                    questionsdisplaymid.textContent = ''
+                    midblack.style.display = 'none'
+                }, 3900)
+                
+            static.addEventListener('animationend', function() {
+                midblack.style.display = 'none'
+
+            yestofirstquestion()
+            static.classList.remove('staticevent')
+            }, {once: true})
+            one = false
+            two = true
+            }
+            
+            }
+            
     else if (three === true) {
         console.log('answer:', answer)
         if ((answer.toLowerCase() === 'jeff' || answer.toLowerCase() === 'jeff the killer') && delay === false) {
@@ -584,6 +631,64 @@ function getanswer() {
     
             three = false;
             four = true;
+            
+        }
+        else if (answer !== answer.toLowerCase() === 'jeff' || answer.toLowerCase() === 'jeff the killer' {
+            answer = '';
+            lives -= 1;
+    
+            if (firstheart === true) {
+                
+                heart3.classList.add('blink');
+                heart3.addEventListener('animationend', function() {
+                    heart3.classList.remove('blink');
+                    heart3.style.display = 'none'; // Hide heart1 after blinking
+                    heart1.style.gridColumn = '11/13'
+                    heart2.style.gridColumn = '9/11'
+                    heart2.style.marginLeft = '0%'
+                    firstheart = false
+                    secondheart = true
+                }, { once: true }); // Use { once: true } to ensure the listener is removed after it runs
+            } else if (secondheart === true) {
+                heart1.classList.add('blink');
+                heart1.addEventListener('animationend', function() {
+                    heart1.classList.remove('blink');
+                    heart1.style.display = 'none'; // Hide heart2 after blinking
+                    heart2.style.gridColumn = '10/12'
+                    secondheart = false
+                    thirdheart = true
+                }, { once: true });
+            } else if (thirdheart === true) {
+                heart2.classList.add('blink');
+                heart2.addEventListener('animationend', function() {
+                    heart2.classList.remove('blink');
+                    heart2.style.display = 'none'; // Hide heart3 after blinking
+                    thirdheart = false
+                }, { once: true });
+            }
+            setTimeout(() => {
+                midblack.style.display = 'block'
+                firstform.style.display = 'none'
+                submit.style.display = 'none'
+                questionsdisplay.textContent = ''
+                midtext2()
+            }, 800)
+
+            setTimeout(() => {
+                questionsdisplaymid.textContent = ''
+                midblack.style.display = 'none'
+            }, 3900)
+            
+        static.addEventListener('animationend', function() {
+            midblack.style.display = 'none'
+
+        yestofirstquestion()
+        static.classList.remove('staticevent')
+        }, {once: true})
+        three = false
+        four = true
+        }
+        
         }
     }
     
@@ -741,6 +846,7 @@ function getanswer() {
         }
     }
 }
+
 
 
 
