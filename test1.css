@@ -134,6 +134,7 @@ body {
     grid-row: 8/10;
     font-family: 'horror';
     z-index: 500;
+    display: none;
 }
 
 .questions-display {
