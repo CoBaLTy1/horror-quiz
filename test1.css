@@ -767,7 +767,21 @@ body {
 
 .blink {
     opacity: 1;
-    animation: blinking 2s forwards;
+    animation: blinking 4s forwards;
+}
+
+
+.midblack {
+    justify-self: center;
+    align-self: center;
+    background-color: black;
+    height: 75%;
+    width: 75%;
+    grid-column: 7/15;
+    grid-row: 5/8;
+    display: none;
+    z-index: 99999999999999999999;
+    border: 5px solid white;
 }
 
 @keyframes statismo {
@@ -797,18 +811,6 @@ body {
 @keyframes blinking {
     0% {
         opacity: 1;
-    }
-    12.5% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    } 37.5% {
-        opacity: 0;
-    } 50% {
-        opacity: 1;
-    }62.5% {
-        opacity: 0;
     }
     75% {
         opacity: 1;
