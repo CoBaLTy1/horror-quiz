@@ -285,6 +285,7 @@ const tenthform = document.querySelector('.tenth-form')
 const full1 = document.querySelector('.full1')
 const playagain = document.querySelector('.playagain')
 const goback = document.querySelector('.goback')
+const warningtext = document.querySelector('.warning-text')
 
 
 
@@ -720,6 +721,7 @@ function getanswer() {
             
         static.addEventListener('animationend', function() {
             midblack.style.display = 'none'
+            question4()
         static.classList.remove('staticevent')
         }, {once: true})
         three = false
@@ -801,9 +803,11 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                firstform.style.display = 'none'
+                fourthformform.style.display = 'none'
+                russian.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
+
                 midtext2()
             }, 800)
 
@@ -814,6 +818,7 @@ function getanswer() {
             
         static.addEventListener('animationend', function() {
             midblack.style.display = 'none'
+            question5()
         static.classList.remove('staticevent')
         }, {once: true})
         four = false
@@ -866,6 +871,13 @@ function getanswer() {
             lives -= 1;
             fifthone = false
             sixthone = true
+            warningtext.style.display = 'block'
+            
+            if (passwordLength == 15) {
+                warningtext.style.display = 'none'
+            } else {
+                warningtext.style.display = 'block'
+            }
     
             if (firstheart === true) {
                 
@@ -898,15 +910,18 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                firstform.style.display = 'none'
+                fifthform.style.display = 'none'
+                counter.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
+                warningtext.style.display = 'none'
                 midtext2()
             }, 800)
 
             setTimeout(() => {
                 questionsdisplaymid.textContent = ''
                 midblack.style.display = 'none'
+                question6()
             }, 3900)
             
         static.addEventListener('animationend', function() {
@@ -995,7 +1010,11 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                firstform.style.display = 'none'
+                sixthform.style.display = 'none'
+                possession.style.display = 'none'
+                shining.style.display = 'none'
+                alien.style.display = 'none'
+                lambs.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
                 midtext2()
@@ -1004,6 +1023,7 @@ function getanswer() {
             setTimeout(() => {
                 questionsdisplaymid.textContent = ''
                 midblack.style.display = 'none'
+                question7()
             }, 3900)
             
         static.addEventListener('animationend', function() {
@@ -1087,7 +1107,8 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                firstform.style.display = 'none'
+                seventhform.style.display = 'none'
+                thenightmare.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
                 midtext2()
@@ -1096,6 +1117,7 @@ function getanswer() {
             setTimeout(() => {
                 questionsdisplaymid.textContent = ''
                 midblack.style.display = 'none'
+                question8()
             }, 3900)
             
         static.addEventListener('animationend', function() {
@@ -1179,7 +1201,8 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                firstform.style.display = 'none'
+                eightform.style.display = 'none'
+                therake.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
                 midtext2()
@@ -1188,6 +1211,7 @@ function getanswer() {
             setTimeout(() => {
                 questionsdisplaymid.textContent = ''
                 midblack.style.display = 'none'
+                question9()
             }, 3900)
             
         static.addEventListener('animationend', function() {
@@ -1274,7 +1298,11 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                firstform.style.display = 'none'
+                ninethform.style.display = 'none'
+                scream.style.display = 'none'
+                jigsaw.style.display = 'none'
+                slenderman.style.display = 'none'
+                smiledog.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
                 midtext2()
@@ -1283,6 +1311,7 @@ function getanswer() {
             setTimeout(() => {
                 questionsdisplaymid.textContent = ''
                 midblack.style.display = 'none'
+                question10()
             }, 3900)
             
         static.addEventListener('animationend', function() {
