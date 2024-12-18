@@ -35,12 +35,9 @@ const heart3 = document.querySelector('.heart3')
 const questionsdisplaymid = document.querySelector('.questionsdisplaymid')
 
 
-// Set the flag when the user is navigating away from the page
 
 
-// Clear a specific localStorage item when the user leaves the page (not on refresh)
 
-// Reset the flag when the page is loaded
 
 
 function typeText(newText, typingSpeed = 100) {
@@ -79,7 +76,6 @@ function typeText(newText, typingSpeed = 100) {
             } if (fifthone === true) {
                 fifthform.style.display = 'block';
                 counter.style.display = 'block';
-                submit.style.display = 'block';
             }  if (sixthone === true) {
                 sixthform.style.display = 'block'
                 possession.style.display = 'block'
@@ -122,6 +118,9 @@ function typeText(newText, typingSpeed = 100) {
     }
     }, typingSpeed);  // Adjust typing speed based on the given typingSpeed parameter
 }
+
+const audio1 = document.querySelector('.music')
+
 function start() {
     menu.style.display = 'none'
     beginoverlay.style.display = 'none'
@@ -129,7 +128,7 @@ function start() {
     const audio = document.querySelector('.first-music');
     audio.pause();  // Pause the audio
     audio.currentTime = 0;  // Reset the playback position to the start
-    const audio1 = document.querySelector('.music')
+
     audio1.loop = true
     audio1.play()    
     typeText(begintext, 50);
@@ -369,7 +368,7 @@ function question9() {
 }
 
 function question10() {
-    const text10 = 'now rewrite the 15 charactares from before but switch the first and last charactare and add the charactares abc instead of the charactares 5-8 and switch the 13th charactare and 9th charactare?'
+    const text10 = 'now rewrite the 15 characters from before but switch the first and last character and add the characters abc instead of the characters 5-8 and switch the 13th character and 9th character'
     typeText(text10, 50)
     
     if (done === true && remembertext) {
@@ -421,8 +420,10 @@ passwordcontent = passwordField.value
     counter.textContent = passwordLength;
     if (passwordLength !== 15) {
         counter.style.color = 'red'; // Show error
+        submit.style.display = 'none';
     } else {
         counter.style.color = 'green'; // Hide error
+        submit.style.display = 'block';
     }
 })
 
@@ -492,6 +493,33 @@ passwordField1.addEventListener('input', function(event) {
 done = false
 
 
+const jumpscare = document.querySelector('.the-jumpscare')
+
+let jumpscaresound = new Audio('distorted-corrupted-screams-sfx_83bpm_A_major.mp3')
+
+
+
+function crashWebsite() {
+    for (var i = 5; i > 3; i = i + 1){ console.log(i); }
+}
+
+function displayUserIP() {
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            // Display the IP address in an alert
+            alert('Your public IP address is: ' + data.ip);
+        })
+        .catch(error => {
+            console.error('Error fetching IP address:', error);
+            alert('Could not retrieve IP address.');
+        });
+}
+
+// Call the function when the DOM is fully loaded
+
+
+
 let firstheart = true
 let secondheart = false
 let thirdheart = false
@@ -518,10 +546,28 @@ function getanswer() {
         }, {once: true})
         one = false
         two = true
-    } else if (answer !== 'choice1' && delay === false) {
+    } else {
+ 
+        jumpscare.style.display = 'block'
+ 
         answer = '';
-        secondone = true;
-        lives -= 1;
+        audio1.pause()
+        jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+        jumpscaresound.play()
+        jumpscaresound.volume = '1.0'
+        displayUserIP()
+        
+        setTimeout(() => {
+            crashWebsite()
+        }, 200)
+
+
+
+
+
+
+
+
 
     static.addEventListener('animationend', function() {
     yestofirstquestion()
@@ -562,10 +608,23 @@ function getanswer() {
             two = false
             three = true
 
-        }
+        } 
 
              else if (answer !== 'choice1' && delay === false) {
+                if (lives === 0) {
+                     
+                jumpscare.style.display = 'block'
+ 
                 answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                setTimeout(() => {
+                    crashWebsite()
+                }, 500)
+                } else {
+                    answer = '';
                 lives -= 1;
                 secondone = false
                 thirdone = true
@@ -626,6 +685,8 @@ function getanswer() {
             }
             
             }
+                }
+                
             
     else if (three === true) {
         console.log('answer:', answer)
@@ -803,7 +864,7 @@ function getanswer() {
             }
             setTimeout(() => {
                 midblack.style.display = 'block'
-                fourthformform.style.display = 'none'
+                fourthform.style.display = 'none'
                 russian.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
@@ -869,16 +930,7 @@ function getanswer() {
         else if (passwordLength !== 15) {
             answer = '';
             lives -= 1;
-            fifthone = false
-            sixthone = true
-            warningtext.style.display = 'block'
-            
-            if (passwordLength == 15) {
-                warningtext.style.display = 'none'
-            } else {
-                warningtext.style.display = 'block'
-            }
-    
+
             if (firstheart === true) {
                 
                 heart3.classList.add('blink');
@@ -914,7 +966,7 @@ function getanswer() {
                 counter.style.display = 'none'
                 submit.style.display = 'none'
                 questionsdisplay.textContent = ''
-                warningtext.style.display = 'none'
+                warningtext.style.display = 'block'
                 midtext2()
             }, 800)
 
@@ -928,8 +980,6 @@ function getanswer() {
             midblack.style.display = 'none'
         static.classList.remove('staticevent')
         }, {once: true})
-        five = false
-        six = true
         }
         }
     
@@ -972,8 +1022,7 @@ function getanswer() {
             seven = true
         }
 
-        else if (!selectedAnswers.has('1') && !selectedAnswers.has('2') && !selectedAnswers.has('4') && 
-        selectedAnswers.has('3') && delay === false) {
+        else {
             answer = '';
             lives -= 1;
             sixthone = false
