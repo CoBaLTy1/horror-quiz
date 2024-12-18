@@ -785,6 +785,17 @@ body {
     border: 5px solid white;
 }
 
+.warning-text {
+    grid-column: 7/15;
+    grid-row: 11;
+    z-index: 99999999999999999999999999999999999999999999999999999;
+    color: red;
+    font-size: 1.2em;
+    text-align: center;
+    font-family: digital;
+    display: none;
+}
+
 @keyframes statismo {
     0% {
         opacity: 0;
