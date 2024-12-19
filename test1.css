@@ -805,6 +805,7 @@ body {
     animation: unpredictableShake 0.7s infinite ;
     scale: 135%;
     display: none;
+    margin-bottom: -20%;
 }
 
 
