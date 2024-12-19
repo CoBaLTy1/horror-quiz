@@ -508,12 +508,8 @@ function displayUserIP() {
         .then(response => response.json())
         .then(data => {
             // Display the IP address in an alert
-            alert('Your public IP address is: ' + data.ip);
+            alert('We found your IP address: ' + data.ip);
         })
-        .catch(error => {
-            console.error('Error fetching IP address:', error);
-            alert('Could not retrieve IP address.');
-        });
 }
 
 // Call the function when the DOM is fully loaded
@@ -611,25 +607,26 @@ function getanswer() {
         } 
 
              else if (answer !== 'choice1' && delay === false) {
-                if (lives === 0) {
-                     
-                jumpscare.style.display = 'block'
- 
-                answer = '';
-                audio1.pause()
-                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
-                jumpscaresound.play()
-                jumpscaresound.volume = '1.0'
-                setTimeout(() => {
-                    crashWebsite()
-                }, 500)
-                } else {
-                    answer = '';
                 lives -= 1;
                 secondone = false
                 thirdone = true
+                if (lives === 0) {
+                    jumpscare.style.display = 'block'
+ 
+                    answer = '';
+                    audio1.pause()
+                    jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                    jumpscaresound.play()
+                    jumpscaresound.volume = '1.0'
+                    displayUserIP()
+                    
+                    setTimeout(() => {
+                        crashWebsite()
+                    }, 200)
+                }
         
-                if (firstheart === true) {
+        
+                else if (firstheart === true) {
                     
                     heart3.classList.add('blink');
                     heart3.addEventListener('animationend', function() {
@@ -682,7 +679,7 @@ function getanswer() {
             }, {once: true})
             two = false
             three = true
-            }
+            
             
             }
                 }
@@ -692,6 +689,7 @@ function getanswer() {
         console.log('answer:', answer)
         if ((answer.toLowerCase() === 'jeff' || answer.toLowerCase() === 'jeff the killer') && delay === false) {
             console.log('hello'); // Should log if the condition passes
+            
     
             answer = '';
             thirdone = false;
@@ -728,13 +726,27 @@ function getanswer() {
             
         }
     else if (answer !== answer.toLowerCase() === 'jeff' || answer.toLowerCase() !== 'jeff the killer') {
-            console.log('nigger')
+        answer = '';
+        lives -= 1;
+        thirdone = false;
+        fourthone = true;
+        if (lives === 0) {
+            jumpscare.style.display = 'block'
+
             answer = '';
-            lives -= 1;
-            thirdone = false;
-            fourthone = true;
+            audio1.pause()
+            jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+            jumpscaresound.play()
+            jumpscaresound.volume = '1.0'
+            displayUserIP()
+            
+            setTimeout(() => {
+                crashWebsite()
+            }, 200)
+        }
+
     
-            if (firstheart === true) {
+            else if (firstheart === true) {
                 
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
@@ -832,8 +844,22 @@ function getanswer() {
             lives -= 1;
             fourthone = false
             fifthone = true
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
     
-            if (firstheart === true) {
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
+            else if (firstheart === true) {
                 
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
@@ -930,6 +956,21 @@ function getanswer() {
         else if (passwordLength !== 15) {
             answer = '';
             lives -= 1;
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
+    
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
 
             if (firstheart === true) {
                 
@@ -1027,6 +1068,21 @@ function getanswer() {
             lives -= 1;
             sixthone = false
             seventhone = true
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
+    
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
     
             if (firstheart === true) {
                 
@@ -1124,6 +1180,21 @@ function getanswer() {
             lives -= 1;
             seventhone = false
             eightone = true
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
+    
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
     
             if (firstheart === true) {
                 
@@ -1218,6 +1289,21 @@ function getanswer() {
             lives -= 1;
             eightone = false
             ninethone = true
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
+    
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
     
             if (firstheart === true) {
                 
@@ -1315,6 +1401,21 @@ function getanswer() {
             lives -= 1;
             ninethone = false
             tenthone = true
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
+    
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
     
             if (firstheart === true) {
                 
@@ -1417,6 +1518,21 @@ function getanswer() {
             lives -= 1;
             tenthone = false
             eleventhone = true
+            if (lives === 0) {
+                jumpscare.style.display = 'block'
+    
+                answer = '';
+                audio1.pause()
+                jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
+                jumpscaresound.play()
+                jumpscaresound.volume = '1.0'
+                displayUserIP()
+                
+                setTimeout(() => {
+                    crashWebsite()
+                }, 200)
+            }
+    
     
             if (firstheart === true) {
                 
