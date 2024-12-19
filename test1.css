@@ -803,7 +803,7 @@ body {
     width: 100vw;
     z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999;
     animation: unpredictableShake 0.7s infinite ;
-    scale: 130%;
+    scale: 135%;
     display: none;
 }
 
@@ -811,47 +811,77 @@ body {
 @keyframes unpredictableShake {
     0% {
         transform: translate(0, 0); /* Start at original position */
-        filter: brightness(1); /* 100% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    5% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     10% {
         transform: translate(12vw, -8vh); /* Move right and up */
-        filter: brightness(1.2); /* 120% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    15% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     20% {
         transform: translate(-10vw, 6vh); /* Move left and down */
-        filter: brightness(1); /* 100% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    25% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     30% {
         transform: translate(8vw, -12vh); /* Move right and up */
-        filter: brightness(1.5); /* 150% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    35% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     40% {
         transform: translate(-6vw, 10vh); /* Move left and down */
-        filter: brightness(1); /* 100% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    45% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     50% {
         transform: translate(10vw, 5vh); /* Move right and slightly down */
-        filter: brightness(2); /* 200% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    55% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     60% {
         transform: translate(-8vw, -7vh); /* Move left and up */
-        filter: brightness(1); /* 100% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    65% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     70% {
         transform: translate(5vw, 12vh); /* Move right and down */
-        filter: brightness(3); /* 300% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    75% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     80% {
         transform: translate(-12vw, -5vh); /* Move left and up */
-        filter: brightness(1); /* 100% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    85% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     90% {
         transform: translate(7vw, 9vh); /* Move right and down */
-        filter: brightness(10); /* 1000% brightness */
+        filter: brightness(1); /* Normal brightness */
+    }
+    95% {
+        filter: brightness(0.4); /* Dimmed brightness */
     }
     100% {
         transform: translate(0, 0); /* Return to original position */
-        filter: brightness(1); /* 100% brightness */
+        filter: brightness(1); /* Normal brightness */
     }
 }
 
