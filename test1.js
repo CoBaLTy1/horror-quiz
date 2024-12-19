@@ -1,3 +1,7 @@
+let firstheart = true
+let secondheart = false
+let thirdheart = false
+
 let lives = 3
 const questionsdisplay = document.querySelector('.questions-display')
 const input = document.querySelector('.input')
@@ -131,6 +135,7 @@ function start() {
 
     audio1.loop = true
     audio1.play()    
+    audio1.volume = '0.1'
     typeText(begintext, 50);
     firstone = true
     audioshowoff.style.display = 'none'
@@ -497,7 +502,8 @@ const jumpscare = document.querySelector('.the-jumpscare')
 
 let jumpscaresound = new Audio('distorted-corrupted-screams-sfx_83bpm_A_major.mp3')
 
-
+let whisper1 = new Audio('whisper-voices-1-193087.mp3')
+let whisper2 = new Audio('')
 
 function crashWebsite() {
     for (var i = 5; i > 3; i = i + 1){ console.log(i); }
@@ -508,17 +514,38 @@ function displayUserIP() {
         .then(response => response.json())
         .then(data => {
             // Display the IP address in an alert
-            alert('We found your IP address: ' + data.ip);
+            alert('Congrats, you lose... thank you for your IP address: ' + data.ip);
         })
 }
 
 // Call the function when the DOM is fully loaded
 
 
+function fadeAudio(audioElement, startVolume, endVolume, duration) {
+    const steps = 20;
+    const volumeStep = (endVolume - startVolume) / steps;
+    const stepDuration = duration / steps;
+    
+    let currentStep = 0;
+    audioElement.volume = startVolume;
+    
+    const fadeInterval = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+            audioElement.volume = startVolume + (volumeStep * currentStep);
+        } else {
+            clearInterval(fadeInterval);
+            audioElement.volume = endVolume;
+            if (endVolume === 0) {
+                audioElement.pause();
+            }
+        }
+    }, stepDuration);
+}
 
-let firstheart = true
-let secondheart = false
-let thirdheart = false
+
+
+
 
 function getanswer() {
     static.style.opacity = '0'
@@ -612,7 +639,7 @@ function getanswer() {
                 thirdone = true
                 if (lives === 0) {
                     jumpscare.style.display = 'block'
- 
+        
                     answer = '';
                     audio1.pause()
                     jumpscaresound.currentTime = 17; // Set the audio to start at 17 seconds
@@ -625,8 +652,7 @@ function getanswer() {
                     }, 200)
                 }
         
-        
-                else if (firstheart === true) {
+                 if (firstheart === true) {
                     
                     heart3.classList.add('blink');
                     heart3.addEventListener('animationend', function() {
@@ -647,6 +673,11 @@ function getanswer() {
                         heart2.style.gridColumn = '10/12'
                         secondheart = false
                         thirdheart = true
+                        fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                        setTimeout(() => {
+                            fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                            fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        }, 2000)
                     }, { once: true });
                 } else if (thirdheart === true) {
                     heart2.classList.add('blink');
@@ -767,6 +798,19 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+
+                    whisper1.loop = true
+                    whisper2.loop = true
+                    whisper1.volume = 0
+                    whisper2.volume = 0;
+                    whisper1.play();
+                    whisper2.play();
+
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 0.02, 2000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 2000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -879,6 +923,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -992,6 +1041,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -1104,6 +1158,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -1216,6 +1275,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -1325,6 +1389,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -1437,6 +1506,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -1554,6 +1628,11 @@ function getanswer() {
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
+                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
+                    setTimeout(() => {
+                        fadeAudio(whisper1, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 1.0, 1000); // Fade in to 50% volume over 1 second
+                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
