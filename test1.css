@@ -807,6 +807,12 @@ body {
     display: none;
     margin-bottom: -20%;
 }
+.eye1, .eye2, .eye3, .eye4, .eye5{
+    z-index: 0;
+
+}
+
+
 
 
 @keyframes unpredictableShake {
