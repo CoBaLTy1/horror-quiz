@@ -2,6 +2,54 @@ let firstheart = true
 let secondheart = false
 let thirdheart = false
 
+const eye1 = document.querySelector('.eye1')
+const eye2 = document.querySelector('.eye2')
+const eye3 = document.querySelector('.eye3')
+const eye4 = document.querySelector('.eye4')
+const eye5 = document.querySelector('.eye5')
+
+// Function to randomly position and rotate the eyes within specified viewport limits
+function positionEyes() {
+    const eyes = [eye1, eye2, eye3, eye4, eye5];
+    const positions = []; // Array to store occupied positions
+
+    eyes.forEach(eye => {
+        let left, top;
+
+        // Find a unique position for each eye
+        do {
+            // Randomly choose to place the eye in the first 30vw or last 10vw
+            const isInFirstSection = Math.random() < 0.3; // 30% chance for the first section
+            left = isInFirstSection 
+                ? Math.random() * 30 + 'vw' // Random position within the first 30vw
+                : (Math.random() * 10 + 90) + 'vw'; // Random position within the last 10vw (90vw to 100vw)
+
+            // Generate a random top position between 0 and 100vh
+            top = Math.random() * 100 + 'vh';
+        } while (
+            positions.some(pos => pos.left === left && pos.top === top) // Check for overlap
+        );
+
+        // Store the position
+        positions.push({ left, top });
+
+        // Generate a random rotation angle (0, 90, 180, 270 degrees)
+        const rotation = Math.floor(Math.random() * 4) * 90; // 0, 90, 180, or 270 degrees
+
+        // Set the random position and rotation for each eye
+        eye.style.position = 'absolute'; // Use absolute positioning
+        eye.style.left = left;
+        eye.style.top = top;
+        eye.style.transform = `rotate(${rotation}deg)`; // Apply rotation
+        eye.style.display = 'block'; // Ensure the eye is visible
+    });
+}
+
+// Call the function to position and rotate the eyes
+positionEyes();
+
+
+
 let lives = 3
 const questionsdisplay = document.querySelector('.questions-display')
 const input = document.querySelector('.input')
@@ -502,8 +550,8 @@ const jumpscare = document.querySelector('.the-jumpscare')
 
 let jumpscaresound = new Audio('distorted-corrupted-screams-sfx_83bpm_A_major.mp3')
 
-let whisper1 = new Audio('whisper-voices-1-193087.mp3')
-let whisper2 = new Audio('')
+let whisper1 = new Audio('New Project.wav')
+let whisper2 = new Audio('New Project (1) (1).wav')
 
 function crashWebsite() {
     for (var i = 5; i > 3; i = i + 1){ console.log(i); }
@@ -542,6 +590,7 @@ function fadeAudio(audioElement, startVolume, endVolume, duration) {
         }
     }, stepDuration);
 }
+
 
 
 
@@ -653,7 +702,7 @@ function getanswer() {
                 }
         
                  if (firstheart === true) {
-                    
+                    positionEyes();
                     heart3.classList.add('blink');
                     heart3.addEventListener('animationend', function() {
                         question3()
@@ -778,10 +827,9 @@ function getanswer() {
 
     
             else if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
-                    question4();
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -808,8 +856,8 @@ function getanswer() {
                     whisper2.play();
 
                     setTimeout(() => {
-                        fadeAudio(whisper1, 0, 0.02, 2000); // Fade in to 50% volume over 1 second
-                        fadeAudio(whisper2, 0, 1.0, 2000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper1, 0, 0.001, 5000); // Fade in to 50% volume over 1 second
+                        fadeAudio(whisper2, 0, 0.001, 5000); // Fade in to 50% volume over 1 second
                     }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
@@ -903,8 +951,9 @@ function getanswer() {
                 }, 200)
             }
     
+    
             else if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -1022,7 +1071,7 @@ function getanswer() {
     
 
             if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -1139,7 +1188,7 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -1256,7 +1305,7 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -1370,7 +1419,7 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -1487,7 +1536,7 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -1609,7 +1658,7 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                
+                positionEyes();
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
