@@ -67,7 +67,6 @@ body {
 }
 
 .begin-overlay {
-
     grid-column: 1/21;
     grid-row: 1/21;
     height: 100%;
@@ -100,6 +99,7 @@ body {
     grid-column: 1/21;
     grid-row: 1/21;
     background-color: black;
+    z-index: -5;
 }
 
 .kvadrat {
@@ -803,13 +803,16 @@ body {
     width: 100vw;
     z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999;
     animation: unpredictableShake 0.7s infinite ;
-    scale: 135%;
+    scale: 132%;
+    margin-top: -5%;
     display: none;
-    margin-bottom: -20%;
 }
-.eye1, .eye2, .eye3, .eye4, .eye5{
-    z-index: 0;
-
+.eye1, .eye2, .eye3, .eye4, .eye5, .eye6, .eye7, .eye8, .eye9, .eye10, .eye11, .eye12, .eye13, .eye14, .eye15 {
+    position: absolute;         
+    z-index: -1;
+    width: 10%;
+    height: 20%;
+    display: none;
 }
 
 
@@ -824,7 +827,7 @@ body {
         filter: brightness(0.4); /* Dimmed brightness */
     }
     10% {
-        transform: translate(12vw, -8vh); /* Move right and up */
+        transform: translate(12vw, -2vh); /* Move right and up */
         filter: brightness(1); /* Normal brightness */
     }
     15% {
@@ -838,7 +841,7 @@ body {
         filter: brightness(0.4); /* Dimmed brightness */
     }
     30% {
-        transform: translate(8vw, -12vh); /* Move right and up */
+        transform: translate(8vw, -2vh); /* Move right and up */
         filter: brightness(1); /* Normal brightness */
     }
     35% {
@@ -859,7 +862,7 @@ body {
         filter: brightness(0.4); /* Dimmed brightness */
     }
     60% {
-        transform: translate(-8vw, -7vh); /* Move left and up */
+        transform: translate(-8vw, -2vh); /* Move left and up */
         filter: brightness(1); /* Normal brightness */
     }
     65% {
@@ -873,7 +876,7 @@ body {
         filter: brightness(0.4); /* Dimmed brightness */
     }
     80% {
-        transform: translate(-12vw, -5vh); /* Move left and up */
+        transform: translate(-12vw, -2vh); /* Move left and up */
         filter: brightness(1); /* Normal brightness */
     }
     85% {
@@ -930,3 +933,4 @@ body {
         opacity: 0;
     }
 }
+
