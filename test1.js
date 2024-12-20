@@ -7,46 +7,103 @@ const eye2 = document.querySelector('.eye2')
 const eye3 = document.querySelector('.eye3')
 const eye4 = document.querySelector('.eye4')
 const eye5 = document.querySelector('.eye5')
+const eye6 = document.querySelector('.eye6')
+const eye7 = document.querySelector('.eye7')
+const eye8 = document.querySelector('.eye8')
+const eye9 = document.querySelector('.eye9')
+const eye10 = document.querySelector('.eye10')
+const eye11 = document.querySelector('.eye11')
+const eye12 = document.querySelector('.eye12')
+const eye13 = document.querySelector('.eye13')
+const eye14 = document.querySelector('.eye14')
+const eye15 = document.querySelector('.eye15')
+
 
 // Function to randomly position and rotate the eyes within specified viewport limits
 function positionEyes() {
-    const eyes = [eye1, eye2, eye3, eye4, eye5];
-    const positions = []; // Array to store occupied positions
 
-    eyes.forEach(eye => {
-        let left, top;
+    const eyes = [eye1, eye2, eye3, eye4, eye5, eye6, eye7, eye8, eye9, eye10, eye11, eye12, eye13, eye14, eye15];
+    
+    // Create a grid to track occupied pixels
+    const gridSize = 10; // Size of each grid cell in pixels
+    const gridWidth = Math.ceil(window.innerWidth / gridSize);
+    const gridHeight = Math.ceil(window.innerHeight / gridSize);
+    const occupiedGrid = Array(gridHeight).fill().map(() => Array(gridWidth).fill(false));
 
-        // Find a unique position for each eye
-        do {
-            // Randomly choose to place the eye in the first 30vw or last 10vw
-            const isInFirstSection = Math.random() < 0.3; // 30% chance for the first section
-            left = isInFirstSection 
-                ? Math.random() * 30 + 'vw' // Random position within the first 30vw
-                : (Math.random() * 10 + 90) + 'vw'; // Random position within the last 10vw (90vw to 100vw)
+    // Calculate eye dimensions in grid cells
+    const eyePixelWidth = Math.ceil(window.innerWidth * 0.15);  // 15% of screen width
+    const eyePixelHeight = Math.ceil(window.innerHeight * 0.2); // 20% of screen height
+    const eyeGridWidth = Math.ceil(eyePixelWidth / gridSize);
+    const eyeGridHeight = Math.ceil(eyePixelHeight / gridSize);
 
-            // Generate a random top position between 0 and 100vh
-            top = Math.random() * 100 + 'vh';
-        } while (
-            positions.some(pos => pos.left === left && pos.top === top) // Check for overlap
-        );
+    // Function to check if area is available in grid
+    function isAreaAvailable(gridX, gridY) {
+        // Check if any cell in the proposed area is occupied
+        for (let y = gridY; y < gridY + eyeGridHeight && y < gridHeight; y++) {
+            for (let x = gridX; x < gridX + eyeGridWidth && x < gridWidth; x++) {
+                if (occupiedGrid[y][x]) return false;
+            }
+        }
+        return true;
+    }
 
-        // Store the position
-        positions.push({ left, top });
+    // Function to mark area as occupied
+    function markAreaOccupied(gridX, gridY) {
+        for (let y = gridY; y < gridY + eyeGridHeight && y < gridHeight; y++) {
+            for (let x = gridX; x < gridX + eyeGridWidth && x < gridWidth; x++) {
+                occupiedGrid[y][x] = true;
+            }
+        }
+    }
 
-        // Generate a random rotation angle (0, 90, 180, 270 degrees)
-        const rotation = Math.floor(Math.random() * 4) * 90; // 0, 90, 180, or 270 degrees
+    // Function to generate random position in grid coordinates
+    function generateRandomGridPosition() {
+        return {
+            x: Math.floor(Math.random() * (gridWidth - eyeGridWidth)),
+            y: Math.floor(Math.random() * (gridHeight - eyeGridHeight)),
+            rotation: Math.random() * 360
+        };
+    }
 
-        // Set the random position and rotation for each eye
-        eye.style.position = 'absolute'; // Use absolute positioning
-        eye.style.left = left;
-        eye.style.top = top;
-        eye.style.transform = `rotate(${rotation}deg)`; // Apply rotation
-        eye.style.display = 'block'; // Ensure the eye is visible
+    // Position each eye with a staggered effect
+    eyes.forEach((eye, index) => {
+        setTimeout(() => { // Stagger the positioning
+            let position;
+            let attempts = 0;
+            const maxAttempts = 100;
+            let found = false;
+
+            // Try to find an available position
+            while (!found && attempts < maxAttempts) {
+                position = generateRandomGridPosition();
+                if (isAreaAvailable(position.x, position.y)) {
+                    found = true;
+                    markAreaOccupied(position.x, position.y);
+                }
+                attempts++;
+            }
+
+            if (found) {
+                // Convert grid position back to pixels
+                const pixelX = (position.x * gridSize / window.innerWidth) * 100;
+                const pixelY = (position.y * gridSize / window.innerHeight) * 100;
+
+                // Apply position to eye
+                eye.style.position = 'absolute';
+                eye.style.left = `${pixelX}%`;
+                eye.style.top = `${pixelY}%`;
+                eye.style.transform = `rotate(${position.rotation}deg)`;
+                eye.style.display = 'block';
+            } else {
+                // Hide eye if no position found
+                eye.style.display = 'none';
+            }
+        }, index * 100); // Stagger by 100ms for each eye
     });
 }
 
 // Call the function to position and rotate the eyes
-positionEyes();
+
 
 
 
@@ -444,7 +501,7 @@ function question10() {
 }
 
 function end() {
-    const text11 = 'congratulations you have completed the quiz! Thank you for playing! It only took you ### attempts'
+    const text11 = 'congratulations you have completed the quiz! Thank you for playing! It only took you ' + attempts + ' attempts'
     typeText(text11, 50)
 }
 
@@ -702,9 +759,12 @@ function getanswer() {
                 }
         
                  if (firstheart === true) {
-                    positionEyes();
+                    setTimeout(() => {
+                        positionEyes()
+                    }, 800)
                     heart3.classList.add('blink');
                     heart3.addEventListener('animationend', function() {
+                        
                         question3()
                         heart3.classList.remove('blink');
                         heart3.style.display = 'none'; // Hide heart1 after blinking
@@ -827,7 +887,9 @@ function getanswer() {
 
     
             else if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
                     heart3.classList.remove('blink');
@@ -840,25 +902,28 @@ function getanswer() {
                 }, { once: true }); // Use { once: true } to ensure the listener is removed after it runs
             } else if (secondheart === true) {
                 heart1.classList.add('blink');
+                fadeAudio(audio1, audio1.volume, 0, 1000); // Fade out over 2 seconds
+
+                whisper1.loop = true
+                whisper2.loop = true
+                whisper1.volume = 0
+                whisper2.volume = 0;
+                whisper1.play();
+                whisper2.play();
+
+                setTimeout(() => {
+                    fadeAudio(whisper1, 0, 0.001, 1000); // Fade in to 50% volume over 1 second
+                    fadeAudio(whisper2, 0, 0.001, 1000); // Fade in to 50% volume over 1 second
+                }, 1600)
+
                 heart1.addEventListener('animationend', function() {
                     heart1.classList.remove('blink');
                     heart1.style.display = 'none'; // Hide heart2 after blinking
                     heart2.style.gridColumn = '10/12'
                     secondheart = false
                     thirdheart = true
-                    fadeAudio(audio1, audio1.volume, 0, 2000); // Fade out over 2 seconds
 
-                    whisper1.loop = true
-                    whisper2.loop = true
-                    whisper1.volume = 0
-                    whisper2.volume = 0;
-                    whisper1.play();
-                    whisper2.play();
 
-                    setTimeout(() => {
-                        fadeAudio(whisper1, 0, 0.001, 5000); // Fade in to 50% volume over 1 second
-                        fadeAudio(whisper2, 0, 0.001, 5000); // Fade in to 50% volume over 1 second
-                    }, 2000)
                 }, { once: true });
             } else if (thirdheart === true) {
                 heart2.classList.add('blink');
@@ -953,9 +1018,12 @@ function getanswer() {
     
     
             else if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1071,9 +1139,12 @@ function getanswer() {
     
 
             if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+                    
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1188,9 +1259,12 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+                    
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1305,9 +1379,12 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+                    
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1419,9 +1496,12 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+                    
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1536,9 +1616,12 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+                    
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1658,9 +1741,12 @@ function getanswer() {
     
     
             if (firstheart === true) {
-                positionEyes();
+                setTimeout(() => {
+                    positionEyes()
+                }, 800)
                 heart3.classList.add('blink');
                 heart3.addEventListener('animationend', function() {
+                    
                     heart3.classList.remove('blink');
                     heart3.style.display = 'none'; // Hide heart1 after blinking
                     heart1.style.gridColumn = '11/13'
@@ -1723,6 +1809,8 @@ const full = document.querySelector('.full')
 
 function resetQuiz() {
     location.reload();
+    audio.loop = true
+    audio.play()  
 }
 
 console.log('Current lives:', lives);
